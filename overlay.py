@@ -8,7 +8,7 @@ def overlay(original_image_path):
     background = background.convert('RGBA')
     overlay = overlay.convert('RGBA')
 
-    background = background.resize(overlay.size);
+    overlay = overlay.resize(background.size);
 
     new_img = background
     new_img.paste(overlay, (0, 0), overlay)
