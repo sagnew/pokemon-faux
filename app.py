@@ -5,6 +5,7 @@ from twilio import twiml
 from overlay import overlay
 
 UPLOAD_FOLDER = '/Users/sagnew/Test/pokemon/pokemon-go-mms'
+legendary_pokemon = ['articuno', 'zapdos', 'moltres', 'mewtwo', 'mew']
 
 app = Flask(__name__)
 
@@ -19,7 +20,10 @@ def sms():
 
         # Default to Mew if no Pokemon is selected.
         if request.form['Body']:
+            # Take the first word they sent, and convert it to lowercase.
             pokemon = request.form['Body'].split()[0].lower()
+            if not pokemon in legendary_pokemon:
+                pokemon = 'mew'
         else:
             pokemon = 'mew'
 
