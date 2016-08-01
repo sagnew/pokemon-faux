@@ -3,7 +3,7 @@ from PIL import Image
 
 def overlay(original_image_path, pokemon):
 
-    overlay_image = Image.open('overlay.png')
+    overlay_image = Image.open('pokemon-go-images/overlay.png')
 
     # This is the image the user sends through text.
     background = Image.open(original_image_path)
