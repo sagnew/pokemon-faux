@@ -4,7 +4,7 @@ from twilio import twiml
 
 from overlay import overlay
 
-UPLOAD_FOLDER = '/Users/sagnew/Test/pokemon/pokemon-go-mms'
+UPLOAD_FOLDER = '/Path/to/your/code/directory'
 legendary_pokemon = ['articuno', 'zapdos', 'moltres', 'mewtwo', 'mew']
 
 app = Flask(__name__)
@@ -29,7 +29,7 @@ def sms():
 
         # Save the image to a new file.
         filename = request.form['MessageSid'] + '.png'
-        f = open(filename, 'wb')
+        f = open('{}/{}'.format(UPLOAD_FOLDER, filename), 'wb')
         f.write(requests.get(request.form['MediaUrl0']).content)
         f.close()
 

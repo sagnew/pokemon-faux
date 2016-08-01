@@ -36,5 +36,3 @@ def overlay(original_image_path, pokemon):
 
     # Save the new image.
     new_img.save(original_image_path,'PNG')
-
-overlay('MM0fa7895f4e046ff0a82e1ba67b81a582.png', 'mewtwo')
