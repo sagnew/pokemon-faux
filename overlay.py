@@ -9,10 +9,11 @@ def overlay(original_image_path, pokemon):
     background = Image.open(original_image_path)
 
     # Resizes the image received so that the height is always 512px.
-    base_height = 512
+    base_height = 512.0
     height_percent = base_height / background.size[1]
     width = int(background.size[0] * height_percent)
-    background = background.resize((width, base_height), Image.BILINEAR)
+
+    background = background.resize((width, int(base_height)), Image.BILINEAR)
 
     # Resize the overlay.
     overlay_image = overlay_image.resize(background.size, Image.BILINEAR)
@@ -35,3 +36,5 @@ def overlay(original_image_path, pokemon):
 
     # Save the new image.
     new_img.save(original_image_path,'PNG')
+
+overlay('MM0fa7895f4e046ff0a82e1ba67b81a582.png', 'mewtwo')
