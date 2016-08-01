@@ -7,15 +7,16 @@ from overlay import overlay
 UPLOAD_FOLDER = '/Users/sagnew/Test/pokemon/pokemon-go-mms'
 
 app = Flask(__name__)
-app.config
 
 
 @app.route('/sms', methods=['POST', 'GET'])
 def sms():
+    # Generate TwiML to respond to the message.
     response = twiml.Response()
     response.message("Please wait while we try to catch your Pokemon")
 
     if request.form['NumMedia'] != '0':
+
         # Default to Mew if no Pokemon is selected.
         if request.form['Body']:
             pokemon = request.form['Body'].split()[0].lower()
@@ -41,7 +42,6 @@ def sms():
     return str(response)
 
 
-# Martian Media URL
 @app.route('/uploads/<filename>', methods=['GET', 'POST'])
 def uploaded_file(filename):
     return send_from_directory(UPLOAD_FOLDER,
