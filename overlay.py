@@ -1,4 +1,3 @@
-import PIL
 from PIL import Image
 
 
@@ -13,10 +12,10 @@ def overlay(original_image_path, pokemon):
     base_height = 512
     height_percent = base_height / background.size[1]
     width = int(background.size[0] * height_percent)
-    background = background.resize((width, base_height), PIL.Image.BILINEAR)
+    background = background.resize((width, base_height), Image.BILINEAR)
 
     # Resize the overlay.
-    overlay_image = overlay_image.resize(background.size, PIL.Image.BILINEAR)
+    overlay_image = overlay_image.resize(background.size, Image.BILINEAR)
 
     # Specify which pokemon sprite is used.
     pokemon_img = Image.open('pokemon-go-images/{}.png'.format(pokemon))
