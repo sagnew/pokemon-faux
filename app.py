@@ -29,9 +29,9 @@ def sms():
 
         # Save the image to a new file.
         filename = request.form['MessageSid'] + '.png'
-        f = open('{}/{}'.format(UPLOAD_FOLDER, filename), 'wb')
-        f.write(requests.get(request.form['MediaUrl0']).content)
-        f.close()
+        with open('{}/{}'.format(UPLOAD_FOLDER, filename), 'wb') as f:
+           image_url = request.form['MediaUrl0']
+           f.write(requests.get(image_url).content)
 
         # Manipulate the image.
         overlay('{}/{}'.format(UPLOAD_FOLDER, filename), pokemon)
@@ -39,7 +39,7 @@ def sms():
         # Respond to the text message.
         with response.message() as message:
             message.body = "{0}".format("Congrats on the sweet catch.")
-            message.media('http://sagnew.ngrok.io/uploads/{}'.format(filename))
+            message.media('http://{your_ngrok_url}/uploads/{}'.format(filename))
     else:
         response.message("Send me an image that you want to catch a Pokemon on!")
 

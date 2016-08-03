@@ -31,7 +31,7 @@ def overlay(original_image_path, pokemon):
 
     # Place the pokemon sprite centered on the background + overlay image.
     new_img.paste(pokemon_img,
-                  (int(width / 4), int(base_height / 4)),
+                  (int(width / 5), int(base_height / 5)),
                   pokemon_img)
 
     # Save the new image.
