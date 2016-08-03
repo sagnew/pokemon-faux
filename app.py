@@ -51,5 +51,12 @@ def uploaded_file(filename):
     return send_from_directory(UPLOAD_FOLDER,
                                filename)
 
+
+@app.route('/voice', methods=['GET', 'POST'])
+def uploaded_file(filename):
+    resp = twiml.Response()
+    resp.play('https://www.dropbox.com/s/gug2oovnsymo4zp/pokemon.mp3?dl=1')
+    return str(resp)
+
 if __name__ == "__main__":
     app.run()
