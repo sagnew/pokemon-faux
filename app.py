@@ -1,3 +1,5 @@
+import random
+
 import requests
 from flask import Flask, request, send_from_directory
 from twilio import twiml
@@ -23,9 +25,9 @@ def sms():
             # Take the first word they sent, and convert it to lowercase.
             pokemon = request.form['Body'].split()[0].lower()
             if not pokemon in legendary_pokemon:
-                pokemon = 'mew'
+                pokemon = random.choice(legendary_pokemon)
         else:
-            pokemon = 'mew'
+            pokemon = random.choice(legendary_pokemon)
 
         # Save the image to a new file.
         filename = request.form['MessageSid'] + '.png'
